@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Service", "Web\Web.Service\Web.Service.csproj", "{E9A29EC4-D7B6-46DC-B938-2C3E51F29F71}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{932D8F94-21C0-4AF3-8094-9CB7BAB1BDF2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{951D0B5E-9EC6-4B40-8040-DD2FFE809894}"
 EndProject
@@ -15,67 +15,75 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{EA8F9BA7-C985-495C-9E58-695FC3367577}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Site", "Web\Web.Site\Web.Site.csproj", "{DC2345AC-ECE8-4186-9535-A0F117E95DE1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit", "Unit", "{49F7D059-89CF-4631-833C-FA2579F4FF4D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admin.Service", "Admin\Admin.Service\Admin.Service.csproj", "{7D98C3AB-30BD-4A15-8CAE-240E5A0BAB69}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{C5433674-A14C-4E26-A8DB-02257DBBAE5D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admin.Dashboard", "Admin\Admin.Dashboard\Admin.Dashboard.csproj", "{ACEA1437-1E4B-44DB-AA7A-5A7695738627}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Functional", "Functional", "{7D875B07-BD6A-4FA1-B4A0-A34DF2395D20}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Infrastructure.Interfaces", "Core\Core.Infrastructure.Interfaces\Core.Infrastructure.Interfaces.csproj", "{C70C6DC0-B184-4F0D-969D-6C4779CB92DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Site", "Source\Web\Web.Site\Web.Site.csproj", "{DC2345AC-ECE8-4186-9535-A0F117E95DE1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Model", "Core\Core.Model\Core.Model.csproj", "{E8D7D560-14F2-4C10-997B-49E014CE1396}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Service", "Source\Web\Web.Service\Web.Service.csproj", "{E9A29EC4-D7B6-46DC-B938-2C3E51F29F71}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Service", "Core\Core.Service\Core.Service.csproj", "{51C72118-64B8-40DA-99FB-CE9F1E7CC35F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Resources", "Source\Web\Web.Resources\Web.Resources.csproj", "{05A26FEA-56F2-4FA1-8D18-CF1AF839E796}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Service.Interfaces", "Core\Core.Service.Interfaces\Core.Service.Interfaces.csproj", "{9DEDB8CB-146A-43FE-A0E9-FA6FC7A1D50F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admin.Service", "Source\Admin\Admin.Service\Admin.Service.csproj", "{7D98C3AB-30BD-4A15-8CAE-240E5A0BAB69}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Shared", "Core\Core.Shared\Core.Shared.csproj", "{29802D26-D418-4EBA-9BF7-631F5776ABA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admin.Dashboard", "Source\Admin\Admin.Dashboard\Admin.Dashboard.csproj", "{ACEA1437-1E4B-44DB-AA7A-5A7695738627}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Captcha", "Infrastructure\Infrastructure.Captcha\Infrastructure.Captcha.csproj", "{698D6991-6024-459D-AD28-45FB7B52E0CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Infrastructure.Interfaces", "Source\Core\Core.Infrastructure.Interfaces\Core.Infrastructure.Interfaces.csproj", "{C70C6DC0-B184-4F0D-969D-6C4779CB92DC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Community", "Infrastructure\Infrastructure.Community\Infrastructure.Community.csproj", "{5E780D5D-0C02-4247-A6D2-A395D51A436B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Model", "Source\Core\Core.Model\Core.Model.csproj", "{E8D7D560-14F2-4C10-997B-49E014CE1396}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Hangfire", "Infrastructure\Infrastructure.Hangfire\Infrastructure.Hangfire.csproj", "{C8CE0D31-BE9D-41D1-8A4F-2DF6E65EBCDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Service", "Source\Core\Core.Service\Core.Service.csproj", "{51C72118-64B8-40DA-99FB-CE9F1E7CC35F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.InstantWin", "Infrastructure\Infrastructure.InstantWin\Infrastructure.InstantWin.csproj", "{B5AF8F80-DE68-4FFB-AB4E-3C6079DF959B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Service.Interfaces", "Source\Core\Core.Service.Interfaces\Core.Service.Interfaces.csproj", "{9DEDB8CB-146A-43FE-A0E9-FA6FC7A1D50F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.ProCampaign", "Infrastructure\Infrastructure.ProCampaign\Infrastructure.ProCampaign.csproj", "{4B70BD6A-9063-4AA7-A6B3-9DC2836C4DF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Shared", "Source\Core\Core.Shared\Core.Shared.csproj", "{29802D26-D418-4EBA-9BF7-631F5776ABA3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.RuntimeCache", "Infrastructure\Infrastructure.RuntimeCache\Infrastructure.RuntimeCache.csproj", "{52EC230F-6717-4B5D-B664-0FD8B43DE7F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Captcha", "Source\Infrastructure\Infrastructure.Captcha\Infrastructure.Captcha.csproj", "{698D6991-6024-459D-AD28-45FB7B52E0CD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Resources", "Web\Web.Resources\Web.Resources.csproj", "{05A26FEA-56F2-4FA1-8D18-CF1AF839E796}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Community", "Source\Infrastructure\Infrastructure.Community\Infrastructure.Community.csproj", "{5E780D5D-0C02-4247-A6D2-A395D51A436B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Relic", "Infrastructure\Infrastructure.Relic\Infrastructure.Relic.csproj", "{BC92BC2E-423E-4B7C-B4B2-05FF04B49AF2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Hangfire", "Source\Infrastructure\Infrastructure.Hangfire\Infrastructure.Hangfire.csproj", "{C8CE0D31-BE9D-41D1-8A4F-2DF6E65EBCDA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admin.Service.Tests", "Test\Admin.Service.Tests\Admin.Service.Tests.csproj", "{C0804319-977B-4303-840C-2ADB23802D5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.InstantWin", "Source\Infrastructure\Infrastructure.InstantWin\Infrastructure.InstantWin.csproj", "{B5AF8F80-DE68-4FFB-AB4E-3C6079DF959B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Service.Tests", "Test\Core.Service.Tests\Core.Service.Tests.csproj", "{141B6A59-1DAF-49E3-8CBC-E1A49B875F57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.ProCampaign", "Source\Infrastructure\Infrastructure.ProCampaign\Infrastructure.ProCampaign.csproj", "{4B70BD6A-9063-4AA7-A6B3-9DC2836C4DF7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Shared.Tests", "Test\Core.Shared.Tests\Core.Shared.Tests.csproj", "{E111F924-B6BC-48E5-BAEF-CB20D82BF558}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.RuntimeCache", "Source\Infrastructure\Infrastructure.RuntimeCache\Infrastructure.RuntimeCache.csproj", "{52EC230F-6717-4B5D-B664-0FD8B43DE7F6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Service.Tests", "Test\Web.Service.Tests\Web.Service.Tests.csproj", "{0A07E5DA-058C-4B13-9E54-25214505CF5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.DAL", "Source\Infrastructure\Infrastructure.DAL\Infrastructure.DAL.csproj", "{C6AC7AC9-9773-4D97-8A8B-84024B05F180}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Site.Tests", "Test\Web.Site.Tests\Web.Site.Tests.csproj", "{48A92B6E-E1DB-4E34-A716-3BA5598A4894}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.DAL.EF", "Source\Infrastructure\Infrastructure.DAL.EF\Infrastructure.DAL.EF.csproj", "{D8351A12-9FC1-495A-8A48-0E633F14E4D8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Captcha.Tests", "Test\Infrastructure.Captcha.Tests\Infrastructure.Captcha.Tests.csproj", "{4321E414-14C0-43FE-9E76-39B278CC06ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Relic", "Source\Infrastructure\Infrastructure.Relic\Infrastructure.Relic.csproj", "{BC92BC2E-423E-4B7C-B4B2-05FF04B49AF2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Community.Tests", "Test\Infrastructure.Community.Tests\Infrastructure.Community.Tests.csproj", "{3A3AD4B1-6D19-4C24-A448-F893FDF2F3CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admin.Service.Tests", "Test\Unit\Admin.Service.Tests\Admin.Service.Tests.csproj", "{C0804319-977B-4303-840C-2ADB23802D5E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Relic.Tests", "Test\Infrastructure.Relic.Tests\Infrastructure.Relic.Tests.csproj", "{07329E0E-BC3E-48B5-88C8-FEA9AC53A40C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Service.Tests", "Test\Unit\Core.Service.Tests\Core.Service.Tests.csproj", "{141B6A59-1DAF-49E3-8CBC-E1A49B875F57}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Hangfire.Tests", "Test\Infrastructure.Hangfire.Tests\Infrastructure.Hangfire.Tests.csproj", "{C489E9C2-A573-4025-84BA-D4D672AE0585}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Shared.Tests", "Test\Unit\Core.Shared.Tests\Core.Shared.Tests.csproj", "{E111F924-B6BC-48E5-BAEF-CB20D82BF558}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.InstantWin.Tests", "Test\Infrastructure.InstantWin.Tests\Infrastructure.InstantWin.Tests.csproj", "{1F0F4026-1B04-475D-A0AC-6051E6CB408B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Service.Tests", "Test\Unit\Web.Service.Tests\Web.Service.Tests.csproj", "{0A07E5DA-058C-4B13-9E54-25214505CF5E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.ProCampaign.Tests", "Test\Infrastructure.ProCampaign.Tests\Infrastructure.ProCampaign.Tests.csproj", "{55C23803-0D6A-41C2-B73B-1513C1C18363}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Site.Tests", "Test\Unit\Web.Site.Tests\Web.Site.Tests.csproj", "{48A92B6E-E1DB-4E34-A716-3BA5598A4894}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.RuntimeCache.Tests", "Test\Infrastructure.RuntimeCache.Tests\Infrastructure.RuntimeCache.Tests.csproj", "{EF1306A6-18DC-4B18-B40E-8EC9B8CC2AF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Captcha.Tests", "Test\Unit\Infrastructure.Captcha.Tests\Infrastructure.Captcha.Tests.csproj", "{4321E414-14C0-43FE-9E76-39B278CC06ED}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.DAL.EF", "Infrastructure\Infrastructure.DAL.EF\Infrastructure.DAL.EF.csproj", "{D8351A12-9FC1-495A-8A48-0E633F14E4D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Community.Tests", "Test\Unit\Infrastructure.Community.Tests\Infrastructure.Community.Tests.csproj", "{3A3AD4B1-6D19-4C24-A448-F893FDF2F3CD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.DAL.EF.Tests", "Test\Infrastructure.DAL.EF.Tests\Infrastructure.DAL.EF.Tests.csproj", "{7C2FD2F5-B3EB-49B6-9F49-3DE41B4F5C08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Relic.Tests", "Test\Unit\Infrastructure.Relic.Tests\Infrastructure.Relic.Tests.csproj", "{07329E0E-BC3E-48B5-88C8-FEA9AC53A40C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.DAL", "Infrastructure\Infrastructure.DAL\Infrastructure.DAL.csproj", "{C6AC7AC9-9773-4D97-8A8B-84024B05F180}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Hangfire.Tests", "Test\Unit\Infrastructure.Hangfire.Tests\Infrastructure.Hangfire.Tests.csproj", "{C489E9C2-A573-4025-84BA-D4D672AE0585}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.InstantWin.Tests", "Test\Unit\Infrastructure.InstantWin.Tests\Infrastructure.InstantWin.Tests.csproj", "{1F0F4026-1B04-475D-A0AC-6051E6CB408B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.ProCampaign.Tests", "Test\Unit\Infrastructure.ProCampaign.Tests\Infrastructure.ProCampaign.Tests.csproj", "{55C23803-0D6A-41C2-B73B-1513C1C18363}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.RuntimeCache.Tests", "Test\Unit\Infrastructure.RuntimeCache.Tests\Infrastructure.RuntimeCache.Tests.csproj", "{EF1306A6-18DC-4B18-B40E-8EC9B8CC2AF9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.DAL.EF.Tests", "Test\Unit\Infrastructure.DAL.EF.Tests\Infrastructure.DAL.EF.Tests.csproj", "{7C2FD2F5-B3EB-49B6-9F49-3DE41B4F5C08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -217,6 +225,10 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E9A29EC4-D7B6-46DC-B938-2C3E51F29F71} = {951D0B5E-9EC6-4B40-8040-DD2FFE809894}
+		{951D0B5E-9EC6-4B40-8040-DD2FFE809894} = {932D8F94-21C0-4AF3-8094-9CB7BAB1BDF2}
+		{8940C899-6B8F-4E67-BF38-7002031487A8} = {932D8F94-21C0-4AF3-8094-9CB7BAB1BDF2}
+		{B77BE5EF-02F7-4EC5-AC57-22B808DFFE7E} = {932D8F94-21C0-4AF3-8094-9CB7BAB1BDF2}
+		{95B4C1C9-A240-4DD2-9C44-D93897DC1B44} = {932D8F94-21C0-4AF3-8094-9CB7BAB1BDF2}
 		{DC2345AC-ECE8-4186-9535-A0F117E95DE1} = {951D0B5E-9EC6-4B40-8040-DD2FFE809894}
 		{7D98C3AB-30BD-4A15-8CAE-240E5A0BAB69} = {8940C899-6B8F-4E67-BF38-7002031487A8}
 		{ACEA1437-1E4B-44DB-AA7A-5A7695738627} = {8940C899-6B8F-4E67-BF38-7002031487A8}
@@ -233,21 +245,24 @@ Global
 		{52EC230F-6717-4B5D-B664-0FD8B43DE7F6} = {95B4C1C9-A240-4DD2-9C44-D93897DC1B44}
 		{05A26FEA-56F2-4FA1-8D18-CF1AF839E796} = {951D0B5E-9EC6-4B40-8040-DD2FFE809894}
 		{BC92BC2E-423E-4B7C-B4B2-05FF04B49AF2} = {95B4C1C9-A240-4DD2-9C44-D93897DC1B44}
-		{C0804319-977B-4303-840C-2ADB23802D5E} = {EA8F9BA7-C985-495C-9E58-695FC3367577}
-		{141B6A59-1DAF-49E3-8CBC-E1A49B875F57} = {EA8F9BA7-C985-495C-9E58-695FC3367577}
-		{E111F924-B6BC-48E5-BAEF-CB20D82BF558} = {EA8F9BA7-C985-495C-9E58-695FC3367577}
-		{0A07E5DA-058C-4B13-9E54-25214505CF5E} = {EA8F9BA7-C985-495C-9E58-695FC3367577}
-		{48A92B6E-E1DB-4E34-A716-3BA5598A4894} = {EA8F9BA7-C985-495C-9E58-695FC3367577}
-		{4321E414-14C0-43FE-9E76-39B278CC06ED} = {EA8F9BA7-C985-495C-9E58-695FC3367577}
-		{3A3AD4B1-6D19-4C24-A448-F893FDF2F3CD} = {EA8F9BA7-C985-495C-9E58-695FC3367577}
-		{07329E0E-BC3E-48B5-88C8-FEA9AC53A40C} = {EA8F9BA7-C985-495C-9E58-695FC3367577}
-		{C489E9C2-A573-4025-84BA-D4D672AE0585} = {EA8F9BA7-C985-495C-9E58-695FC3367577}
-		{1F0F4026-1B04-475D-A0AC-6051E6CB408B} = {EA8F9BA7-C985-495C-9E58-695FC3367577}
-		{55C23803-0D6A-41C2-B73B-1513C1C18363} = {EA8F9BA7-C985-495C-9E58-695FC3367577}
-		{EF1306A6-18DC-4B18-B40E-8EC9B8CC2AF9} = {EA8F9BA7-C985-495C-9E58-695FC3367577}
+		{C0804319-977B-4303-840C-2ADB23802D5E} = {49F7D059-89CF-4631-833C-FA2579F4FF4D}
+		{141B6A59-1DAF-49E3-8CBC-E1A49B875F57} = {49F7D059-89CF-4631-833C-FA2579F4FF4D}
+		{E111F924-B6BC-48E5-BAEF-CB20D82BF558} = {49F7D059-89CF-4631-833C-FA2579F4FF4D}
+		{0A07E5DA-058C-4B13-9E54-25214505CF5E} = {49F7D059-89CF-4631-833C-FA2579F4FF4D}
+		{48A92B6E-E1DB-4E34-A716-3BA5598A4894} = {49F7D059-89CF-4631-833C-FA2579F4FF4D}
+		{4321E414-14C0-43FE-9E76-39B278CC06ED} = {49F7D059-89CF-4631-833C-FA2579F4FF4D}
+		{3A3AD4B1-6D19-4C24-A448-F893FDF2F3CD} = {49F7D059-89CF-4631-833C-FA2579F4FF4D}
+		{07329E0E-BC3E-48B5-88C8-FEA9AC53A40C} = {49F7D059-89CF-4631-833C-FA2579F4FF4D}
+		{C489E9C2-A573-4025-84BA-D4D672AE0585} = {49F7D059-89CF-4631-833C-FA2579F4FF4D}
+		{1F0F4026-1B04-475D-A0AC-6051E6CB408B} = {49F7D059-89CF-4631-833C-FA2579F4FF4D}
+		{55C23803-0D6A-41C2-B73B-1513C1C18363} = {49F7D059-89CF-4631-833C-FA2579F4FF4D}
+		{EF1306A6-18DC-4B18-B40E-8EC9B8CC2AF9} = {49F7D059-89CF-4631-833C-FA2579F4FF4D}
 		{D8351A12-9FC1-495A-8A48-0E633F14E4D8} = {95B4C1C9-A240-4DD2-9C44-D93897DC1B44}
-		{7C2FD2F5-B3EB-49B6-9F49-3DE41B4F5C08} = {EA8F9BA7-C985-495C-9E58-695FC3367577}
+		{7C2FD2F5-B3EB-49B6-9F49-3DE41B4F5C08} = {49F7D059-89CF-4631-833C-FA2579F4FF4D}
 		{C6AC7AC9-9773-4D97-8A8B-84024B05F180} = {95B4C1C9-A240-4DD2-9C44-D93897DC1B44}
+		{49F7D059-89CF-4631-833C-FA2579F4FF4D} = {EA8F9BA7-C985-495C-9E58-695FC3367577}
+		{C5433674-A14C-4E26-A8DB-02257DBBAE5D} = {EA8F9BA7-C985-495C-9E58-695FC3367577}
+		{7D875B07-BD6A-4FA1-B4A0-A34DF2395D20} = {EA8F9BA7-C985-495C-9E58-695FC3367577}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {594FAC44-6FD2-4638-AA67-85513CADEC2A}
