@@ -10,10 +10,6 @@ namespace Core.Shared.DTO
 
         public ParticipationDto Participation { get; set; }
 
-        public string Retailer { get; set; }
-
-        public string AlreadyTriedFlavours { get; set; }
-
         public bool TermsConsent { get; set; }
 
         public bool NewsletterOptin { get; set; }
