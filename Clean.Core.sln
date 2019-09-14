@@ -53,8 +53,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.ProCampaign"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.RuntimeCache", "Source\Infrastructure\Infrastructure.RuntimeCache\Infrastructure.RuntimeCache.csproj", "{52EC230F-6717-4B5D-B664-0FD8B43DE7F6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.DAL", "Source\Infrastructure\Infrastructure.DAL\Infrastructure.DAL.csproj", "{C6AC7AC9-9773-4D97-8A8B-84024B05F180}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.DAL.EF", "Source\Infrastructure\Infrastructure.DAL.EF\Infrastructure.DAL.EF.csproj", "{D8351A12-9FC1-495A-8A48-0E633F14E4D8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Relic", "Source\Infrastructure\Infrastructure.Relic\Infrastructure.Relic.csproj", "{BC92BC2E-423E-4B7C-B4B2-05FF04B49AF2}"
@@ -85,7 +83,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.RuntimeCache
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.DAL.EF.Tests", "Test\Unit\Infrastructure.DAL.EF.Tests\Infrastructure.DAL.EF.Tests.csproj", "{7C2FD2F5-B3EB-49B6-9F49-3DE41B4F5C08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.AutoMapper", "Source\Infrastructure\Infrastructure.AutoMapper\Infrastructure.AutoMapper.csproj", "{C9673B95-7130-442F-940B-0EFCCADD0104}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.AutoMapper", "Source\Infrastructure\Infrastructure.AutoMapper\Infrastructure.AutoMapper.csproj", "{C9673B95-7130-442F-940B-0EFCCADD0104}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -157,10 +155,6 @@ Global
 		{52EC230F-6717-4B5D-B664-0FD8B43DE7F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52EC230F-6717-4B5D-B664-0FD8B43DE7F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52EC230F-6717-4B5D-B664-0FD8B43DE7F6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C6AC7AC9-9773-4D97-8A8B-84024B05F180}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C6AC7AC9-9773-4D97-8A8B-84024B05F180}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C6AC7AC9-9773-4D97-8A8B-84024B05F180}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C6AC7AC9-9773-4D97-8A8B-84024B05F180}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D8351A12-9FC1-495A-8A48-0E633F14E4D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D8351A12-9FC1-495A-8A48-0E633F14E4D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8351A12-9FC1-495A-8A48-0E633F14E4D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -253,7 +247,6 @@ Global
 		{B5AF8F80-DE68-4FFB-AB4E-3C6079DF959B} = {95B4C1C9-A240-4DD2-9C44-D93897DC1B44}
 		{4B70BD6A-9063-4AA7-A6B3-9DC2836C4DF7} = {95B4C1C9-A240-4DD2-9C44-D93897DC1B44}
 		{52EC230F-6717-4B5D-B664-0FD8B43DE7F6} = {95B4C1C9-A240-4DD2-9C44-D93897DC1B44}
-		{C6AC7AC9-9773-4D97-8A8B-84024B05F180} = {95B4C1C9-A240-4DD2-9C44-D93897DC1B44}
 		{D8351A12-9FC1-495A-8A48-0E633F14E4D8} = {95B4C1C9-A240-4DD2-9C44-D93897DC1B44}
 		{BC92BC2E-423E-4B7C-B4B2-05FF04B49AF2} = {95B4C1C9-A240-4DD2-9C44-D93897DC1B44}
 		{C0804319-977B-4303-840C-2ADB23802D5E} = {49F7D059-89CF-4631-833C-FA2579F4FF4D}
