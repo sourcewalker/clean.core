@@ -2,10 +2,8 @@
 
 namespace Core.Shared.DTO
 {
-    public class ParticipantDto
+    public class ParticipantDto : BaseDto
     {
-        public Guid Id { get; set; }
-
         public string EmailHash { get; set; }
 
         public Guid? ParticipationId { get; set; }
@@ -19,9 +17,5 @@ namespace Core.Shared.DTO
         public string ApiStatus { get; set; }
 
         public string ApiMessage { get; set; }
-
-        public DateTimeOffset CreatedDate { get; set; }
-
-        public DateTimeOffset? ModifiedDate { get; set; }
     }
 }

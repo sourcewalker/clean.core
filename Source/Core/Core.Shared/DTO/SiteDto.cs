@@ -2,18 +2,13 @@
 
 namespace Core.Shared.DTO
 {
-    public class SiteDto
+    public class SiteDto : BaseDto
     {
-        public Guid Id { get; set; }
-
         public string Culture { get; set; }
 
         public string Name { get; set; }
 
         public string Domain { get; set; }
 
-        public DateTimeOffset CreatedDate { get; set; }
-
-        public DateTimeOffset? ModifiedDate { get; set; }
     }
 }
