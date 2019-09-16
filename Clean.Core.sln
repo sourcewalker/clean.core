@@ -21,15 +21,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Functional", "Functional", "{7D875B07-BD6A-4FA1-B4A0-A34DF2395D20}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Site", "Source\Web\Web.Site\Web.Site.csproj", "{DC2345AC-ECE8-4186-9535-A0F117E95DE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Site.MVC", "Source\Web\Web.Site.MVC\Web.Site.MVC.csproj", "{DC2345AC-ECE8-4186-9535-A0F117E95DE1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Service", "Source\Web\Web.Service\Web.Service.csproj", "{E9A29EC4-D7B6-46DC-B938-2C3E51F29F71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Service.REST", "Source\Web\Web.Service.REST\Web.Service.REST.csproj", "{E9A29EC4-D7B6-46DC-B938-2C3E51F29F71}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Resources", "Source\Web\Web.Resources\Web.Resources.csproj", "{05A26FEA-56F2-4FA1-8D18-CF1AF839E796}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admin.Service", "Source\Admin\Admin.Service\Admin.Service.csproj", "{7D98C3AB-30BD-4A15-8CAE-240E5A0BAB69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admin.Service.REST", "Source\Admin\Admin.Service.REST\Admin.Service.REST.csproj", "{7D98C3AB-30BD-4A15-8CAE-240E5A0BAB69}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admin.Dashboard", "Source\Admin\Admin.Dashboard\Admin.Dashboard.csproj", "{ACEA1437-1E4B-44DB-AA7A-5A7695738627}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admin.Dashboard.Angular", "Source\Admin\Admin.Dashboard.Angular\Admin.Dashboard.Angular.csproj", "{ACEA1437-1E4B-44DB-AA7A-5A7695738627}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Infrastructure.Interfaces", "Source\Core\Core.Infrastructure.Interfaces\Core.Infrastructure.Interfaces.csproj", "{C70C6DC0-B184-4F0D-969D-6C4779CB92DC}"
 EndProject
@@ -55,7 +55,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.RuntimeCache
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.DAL.EF", "Source\Infrastructure\Infrastructure.DAL.EF\Infrastructure.DAL.EF.csproj", "{D8351A12-9FC1-495A-8A48-0E633F14E4D8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Relic", "Source\Infrastructure\Infrastructure.Relic\Infrastructure.Relic.csproj", "{BC92BC2E-423E-4B7C-B4B2-05FF04B49AF2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.NewRelic", "Source\Infrastructure\Infrastructure.Relic\Infrastructure.NewRelic.csproj", "{BC92BC2E-423E-4B7C-B4B2-05FF04B49AF2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admin.Service.Tests", "Test\Unit\Admin.Service.Tests\Admin.Service.Tests.csproj", "{C0804319-977B-4303-840C-2ADB23802D5E}"
 EndProject
@@ -84,6 +84,14 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.DAL.EF.Tests", "Test\Unit\Infrastructure.DAL.EF.Tests\Infrastructure.DAL.EF.Tests.csproj", "{7C2FD2F5-B3EB-49B6-9F49-3DE41B4F5C08}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.AutoMapper", "Source\Infrastructure\Infrastructure.AutoMapper\Infrastructure.AutoMapper.csproj", "{C9673B95-7130-442F-940B-0EFCCADD0104}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Service.GraphQL", "Source\Web\Web.Service.GraphQL\Web.Service.GraphQL.csproj", "{D18C303F-CA4B-4BA7-B6E4-D1202E92B248}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Site.Angular", "Source\Web\Web.Site.Angular\Web.Site.Angular.csproj", "{891D1374-6325-4D16-9670-FE8336B34820}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Admin.Service.GraphQL", "Source\Admin\Admin.Service.GraphQL\Admin.Service.GraphQL.csproj", "{ACC79390-6BAA-423A-8112-D812BC8FAC37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Admin.Dashboard.Razor", "Source\Admin\Admin.Dashboard.Razor\Admin.Dashboard.Razor.csproj", "{E08E7014-3B85-4E15-A711-822A85EDEB46}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -219,6 +227,22 @@ Global
 		{C9673B95-7130-442F-940B-0EFCCADD0104}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9673B95-7130-442F-940B-0EFCCADD0104}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9673B95-7130-442F-940B-0EFCCADD0104}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D18C303F-CA4B-4BA7-B6E4-D1202E92B248}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D18C303F-CA4B-4BA7-B6E4-D1202E92B248}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D18C303F-CA4B-4BA7-B6E4-D1202E92B248}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D18C303F-CA4B-4BA7-B6E4-D1202E92B248}.Release|Any CPU.Build.0 = Release|Any CPU
+		{891D1374-6325-4D16-9670-FE8336B34820}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{891D1374-6325-4D16-9670-FE8336B34820}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{891D1374-6325-4D16-9670-FE8336B34820}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{891D1374-6325-4D16-9670-FE8336B34820}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACC79390-6BAA-423A-8112-D812BC8FAC37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACC79390-6BAA-423A-8112-D812BC8FAC37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACC79390-6BAA-423A-8112-D812BC8FAC37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACC79390-6BAA-423A-8112-D812BC8FAC37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E08E7014-3B85-4E15-A711-822A85EDEB46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E08E7014-3B85-4E15-A711-822A85EDEB46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E08E7014-3B85-4E15-A711-822A85EDEB46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E08E7014-3B85-4E15-A711-822A85EDEB46}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -263,6 +287,10 @@ Global
 		{EF1306A6-18DC-4B18-B40E-8EC9B8CC2AF9} = {49F7D059-89CF-4631-833C-FA2579F4FF4D}
 		{7C2FD2F5-B3EB-49B6-9F49-3DE41B4F5C08} = {49F7D059-89CF-4631-833C-FA2579F4FF4D}
 		{C9673B95-7130-442F-940B-0EFCCADD0104} = {95B4C1C9-A240-4DD2-9C44-D93897DC1B44}
+		{D18C303F-CA4B-4BA7-B6E4-D1202E92B248} = {951D0B5E-9EC6-4B40-8040-DD2FFE809894}
+		{891D1374-6325-4D16-9670-FE8336B34820} = {951D0B5E-9EC6-4B40-8040-DD2FFE809894}
+		{ACC79390-6BAA-423A-8112-D812BC8FAC37} = {8940C899-6B8F-4E67-BF38-7002031487A8}
+		{E08E7014-3B85-4E15-A711-822A85EDEB46} = {8940C899-6B8F-4E67-BF38-7002031487A8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {594FAC44-6FD2-4638-AA67-85513CADEC2A}

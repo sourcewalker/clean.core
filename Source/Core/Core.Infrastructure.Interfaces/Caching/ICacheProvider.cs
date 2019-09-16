@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Core.Infrastructure.Interfaces.Caching
 {
@@ -7,7 +8,9 @@ namespace Core.Infrastructure.Interfaces.Caching
 
         void Add<T>(string key, T data, double expiry = 6) where T : class;
 
-        T Get<T>(string key) where T : class;
+        T Get<T>(string key, double expiry = 6) where T : class;
+
+        Task<T> GetAsync<T>(string key, double expiry = 6) where T : class;
 
         bool ContainsKey(string key);
 
@@ -16,7 +19,5 @@ namespace Core.Infrastructure.Interfaces.Caching
         void Purge();
 
         void Remove(string key);
-
-        void RemoveByPrefix(string prefix);
     }
 }
