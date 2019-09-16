@@ -8,8 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Linq;
 
-namespace Hexago.Core
+namespace Web.Service
 {
     public class Startup
     {
@@ -64,6 +65,9 @@ namespace Hexago.Core
             // MVC Configuration
             services.AddMvc()
                     .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+
+            services.AddOpenApiDocument();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -79,14 +83,59 @@ namespace Hexago.Core
                 app.UseHsts();
             }
 
-            app.UseHangfireDashboard();
-
             app.UseHttpsRedirection();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+            });
+
+            var externalHostHeader = "X-External-Host";
+            var externalPathHeader = "X-External-Path";
+            app.UseOpenApi(config =>
+            {
+                config.PostProcess =
+                    (document, request) =>
+                    {
+                        document.Info.Version = "v1";
+                        document.Info.Title = "Web Service REST Documentation";
+                        document.Info.Description = "Web Service API for Clean Core template";
+                        document.Info.TermsOfService = "None";
+                        document.Info.Contact = new NSwag.OpenApiContact
+                        {
+                            Name = "Irina Nalijaona",
+                            Email = "nalijaona.andriamifidy@proximitybbdo.fr",
+                            Url = "https://git.proximity.fr/nandriam"
+                        };
+                        document.Info.License = new NSwag.OpenApiLicense
+                        {
+                            Name = "Use under MIT License",
+                            Url = "https://opensource.org/licenses/MIT"
+                        };
+                        if (request.Headers.ContainsKey(externalHostHeader))
+                        {
+                            document.Host = request.Headers[externalHostHeader].First();
+                            document.BasePath = request.Headers[externalPathHeader].First();
+                        }
+                    };
+            });
+
+
+            app.UseSwaggerUi3(config =>
+            {
+                config.Path = "/swagger";
+                config.TransformToExternalPath = (internalUiRoute, request) =>
+                {
+                    var externalPath = request.Headers.ContainsKey(externalPathHeader) ?
+                        request.Headers[externalPathHeader].First() : "";
+                    return $"{externalPath}{internalUiRoute}";
+                };
+            }
+            );
+            app.UseReDoc(options =>
+            {
+                options.Path = "/redoc";
             });
         }
     }

@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 
-namespace Hexago.Core
+[assembly: ApiConventionType(typeof(DefaultApiConventions))]
+namespace Web.Service
 {
     public class Program
     {
