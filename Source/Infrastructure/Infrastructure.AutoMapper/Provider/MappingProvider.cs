@@ -16,16 +16,16 @@ namespace Infrastructure.AutoMapper.Provider
             _mapper = mapper;
         }
 
-        public BaseDto toDto(EntityBase<Guid> entity)
-            => _mapper.Map<EntityBase<Guid>, BaseDto>(entity);
+        public TDto toDto<TDto>(EntityBase<Guid> entity) where TDto : BaseDto
+            => _mapper.Map<EntityBase<Guid>, TDto>(entity);
 
-        public EntityBase<Guid> toEntity(BaseDto dto)
-            => _mapper.Map<BaseDto, EntityBase<Guid>>(dto);
+        public TEntity toEntity<TEntity>(BaseDto dto) where TEntity : EntityBase<Guid>
+            => _mapper.Map<BaseDto, TEntity>(dto);
 
-        public IEnumerable<BaseDto> toDtos(IEnumerable<EntityBase<Guid>> entities)
-            => _mapper.Map<IEnumerable<EntityBase<Guid>>, IEnumerable<BaseDto>>(entities);
+        public IEnumerable<TDto> toDtos<TDto>(IEnumerable<EntityBase<Guid>> entities) where TDto : BaseDto
+            => _mapper.Map<IEnumerable<EntityBase<Guid>>, IEnumerable<TDto>>(entities);
 
-        public IEnumerable<EntityBase<Guid>> toEntities(IEnumerable<BaseDto> dtos)
-            => _mapper.Map<IEnumerable<BaseDto>, IEnumerable<EntityBase<Guid>>>(dtos);
+        public IEnumerable<TEntity> toEntities<TEntity>(IEnumerable<BaseDto> dtos) where TEntity : EntityBase<Guid>
+            => _mapper.Map<IEnumerable<BaseDto>, IEnumerable<TEntity>>(dtos);
     }
 }

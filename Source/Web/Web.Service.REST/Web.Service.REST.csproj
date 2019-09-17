@@ -14,11 +14,14 @@
     <PackageReference Include="Hangfire.Core" Version="1.7.6" />
     <PackageReference Include="Hangfire.SqlServer" Version="1.7.6" />
     <PackageReference Include="Hangfire.AspNetCore" Version="1.7.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
     <PackageReference Include="NSwag.AspNetCore" Version="13.0.6" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Infrastructure\Infrastructure.AutoMapper\Infrastructure.AutoMapper.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Infrastructure.DAL.EF\Infrastructure.DAL.EF.csproj" />
   </ItemGroup>
 
 </Project>

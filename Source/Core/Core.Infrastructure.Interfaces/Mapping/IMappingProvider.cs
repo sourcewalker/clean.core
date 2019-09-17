@@ -7,12 +7,12 @@ namespace Core.Infrastructure.Interfaces.Mapping
 {
     public interface IMappingProvider
     {
-        BaseDto toDto(EntityBase<Guid> entity);
+        TDto toDto<TDto>(EntityBase<Guid> entity) where TDto : BaseDto;
 
-        EntityBase<Guid> toEntity(BaseDto dto);
+        TEntity toEntity<TEntity>(BaseDto dto) where TEntity : EntityBase<Guid>;
 
-        IEnumerable<BaseDto> toDtos(IEnumerable<EntityBase<Guid>> entities);
+        IEnumerable<TDto> toDtos<TDto>(IEnumerable<EntityBase<Guid>> entities) where TDto : BaseDto;
 
-        IEnumerable<EntityBase<Guid>> toEntities(IEnumerable<BaseDto> dtos);
+        IEnumerable<TEntity> toEntities<TEntity>(IEnumerable<BaseDto> dtos) where TEntity : EntityBase<Guid>;
     }
 }

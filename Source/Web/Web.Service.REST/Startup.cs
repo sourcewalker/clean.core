@@ -2,9 +2,11 @@
 using Hangfire;
 using Hangfire.SqlServer;
 using Infrastructure.AutoMapper.Profiles;
+using Infrastructure.DAL.EF;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -39,6 +41,9 @@ namespace Web.Service
 
             // Add runtime cache
             services.AddMemoryCache();
+
+            services.AddDbContext<DatabaseContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("LocalDatabase")));
 
             // Add Hangfire services.
             services.AddHangfire(configuration => 
