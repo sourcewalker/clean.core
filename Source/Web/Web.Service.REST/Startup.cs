@@ -191,7 +191,7 @@ namespace Web.Service
             });
 
             app.UseHangfireDashboard(
-                pathMatch: "/hangfire"
+                //pathMatch: "/hangfire"
                 //options: new DashboardOptions()
                 //{
                 //    Authorization = new IDashboardAuthorizationFilter[] {

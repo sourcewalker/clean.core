@@ -28,7 +28,7 @@ namespace Infrastructure.DAL.EF
 
         public IQueryable<Participation> ParticipationsQueryable
         {
-            get => Participations.Include(v => v.Site);
+            get => Participations.Include(p => p.Site);
             set => Participations = (DbSet<Participation>)value;
         }
 
@@ -36,7 +36,7 @@ namespace Infrastructure.DAL.EF
 
         public IQueryable<Participant> ParticipantsQueryable
         {
-            get => Participants.Include(v => v.Participation);
+            get => Participants.Include(p => p.Participation);
             set => Participants = (DbSet<Participant>)value;
         }
 
