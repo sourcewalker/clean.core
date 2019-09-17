@@ -12,7 +12,7 @@ namespace Web.Service.REST.Controllers
     [ApiController]
     [RequireHttps]
     [Route("[controller]")]
-    [EnableCors]
+    //[EnableCors]
     public class ConfigurationController : ControllerBase
     {
         private readonly ISiteService _siteService;

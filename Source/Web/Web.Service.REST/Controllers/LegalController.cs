@@ -13,7 +13,7 @@ namespace Web.Service.REST.Controllers
 {
     [ApiController]
     [RequireHttps]
-    [EnableCors]
+    //[EnableCors]
     [Route("[controller]")]
     public class LegalController : ControllerBase
     {
@@ -70,7 +70,7 @@ namespace Web.Service.REST.Controllers
                 apiResponse.Message = $"Error occured in {e.Source}";
                 apiResponse.Data = expando;
 
-                //_logger.LogError(e.Message, e);
+                _logger.LogError(e.Message, e);
 
                 return BadRequest(apiResponse);
             }

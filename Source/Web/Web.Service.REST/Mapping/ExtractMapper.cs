@@ -3,9 +3,9 @@ using Core.Shared.DTO;
 using System.Collections.Generic;
 using Web.Service.REST.Models;
 
-namespace Web.Service.REST.Mapping.Helper
+namespace Web.Service.REST.Mapping
 {
-    public class ExtractMapper
+    public class ExtractMapper : IExtractMapper
     {
         private readonly IMapper _mapper;
 

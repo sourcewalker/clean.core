@@ -32,6 +32,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
 using Web.Service.REST.Filters;
+using Web.Service.REST.Mapping;
 
 namespace Web.Service
 {
@@ -44,7 +45,6 @@ namespace Web.Service
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<IISOptions>(options =>
@@ -52,12 +52,26 @@ namespace Web.Service
                 options.ForwardClientCertificate = false;
             });
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    builder =>
+                    {
+                        builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials();
+                    });
+            });
+
             // Automapper configuration
             var mappingConfig = new MapperConfiguration(
                 mc =>
-                {
-                    mc.AddProfile(new DomainMapperProfile());
-                });
+                    {
+                        mc.AddProfile(new DomainMapperProfile());
+                        mc.AddProfile(new ViewMapperProfile());
+                    });
             services.AddSingleton(mappingConfig.CreateMapper());
 
             // Add runtime cache
@@ -68,33 +82,29 @@ namespace Web.Service
 
             // Add Hangfire services.
             services.AddHangfire(configuration => 
-                configuration
-                    .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
-                    .UseSimpleAssemblyNameTypeSerializer()
-                    .UseRecommendedSerializerSettings()
-                    .UseSqlServerStorage(
-                        Configuration.GetConnectionString("HangfireConnection"), 
-                        new SqlServerStorageOptions
-                        {
-                            CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
-                            SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
-                            QueuePollInterval = TimeSpan.Zero,
-                            UseRecommendedIsolationLevel = true,
-                            UsePageLocksOnDequeue = true,
-                            DisableGlobalLocks = true
-                        })
-                    );
-
-            // Add the processing server as IHostedService
+               configuration
+                .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+                .UseSimpleAssemblyNameTypeSerializer()
+                .UseRecommendedSerializerSettings()
+                .UseSqlServerStorage(
+                    Configuration.GetConnectionString("HangfireDatabase"), 
+                    new SqlServerStorageOptions
+                    {
+                        CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
+                        SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
+                        QueuePollInterval = TimeSpan.Zero,
+                        UseRecommendedIsolationLevel = true,
+                        UsePageLocksOnDequeue = true,
+                        DisableGlobalLocks = true
+                    })
+                );
             services.AddHangfireServer();
 
             // MVC Configuration
             services.AddMvc()
                     .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            //services.AddScoped<Core.Infrastructure.Interfaces.Configuration.IConfigurationProvider, ConfigurationProvider>();
-
-            // Infrastructures
+            // Infrastructures Injection
             services.AddScoped<IMappingProvider, MappingProvider>();
             services.AddScoped<IAccountProvider, KuhmunityProvider>();
             services.AddScoped<ILoggingProvider, LoggingProvider>();
@@ -103,13 +113,13 @@ namespace Web.Service
             services.AddScoped<IFormValidatorProvider, CaptchaProvider>();
             services.AddScoped<IInstantWinMomentProvider, InstantWinProvider>();
 
-            // DAL
+            // DAL Injection
             services.AddScoped<IFailedTransactionRepository, FailedTransactionRepository>();
             services.AddScoped<ISiteRepository, SiteRepository>();
             services.AddScoped<IParticipationRepository, ParticipationRepository>();
             services.AddScoped<IParticipantRepository, ParticipantRepository>();
 
-            // Services
+            // Services Injection
             services.AddScoped<IParticipationService, ParticipationService>();
             services.AddScoped<IParticipantService, ParticipantService>();
             services.AddScoped<IFailedTransactionService, FailedTransactionService>();
@@ -119,10 +129,10 @@ namespace Web.Service
             services.AddScoped<IValidationService, ValidationService>();
             services.AddScoped<ILegalService, LegalService>();
 
+            // NSwag Configuration
             services.AddOpenApiDocument();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -131,16 +141,16 @@ namespace Web.Service
             }
             else
             {
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
             app.UseHttpsRedirection();
+            app.UseCors("AllowAll");
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Ping}/{action=Index}/{id?}");
             });
 
             var externalHostHeader = "X-External-Host";
@@ -190,15 +200,16 @@ namespace Web.Service
                 options.Path = "/redoc";
             });
 
-            app.UseHangfireDashboard(
-                //pathMatch: "/hangfire"
-                //options: new DashboardOptions()
-                //{
-                //    Authorization = new IDashboardAuthorizationFilter[] {
-                //        new SchedulerAuthorizationFilter(Configuration)
-                //    }
-                //}
-            );
+            app.UseHangfireDashboard();
+            //app.UseHangfireDashboard(
+            //    pathMatch: "/hangfire"
+            //    options: new DashboardOptions()
+            //    {
+            //        Authorization = new IDashboardAuthorizationFilter[] {
+            //            new SchedulerAuthorizationFilter(Configuration)
+            //        }
+            //    }
+            //);
         }
     }
 }

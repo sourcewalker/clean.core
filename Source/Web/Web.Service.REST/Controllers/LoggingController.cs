@@ -3,17 +3,15 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Dynamic;
-using System.Linq;
-using System.Threading.Tasks;
 using Web.Service.REST.Models;
 
 namespace Web.Service.REST.Controllers
 {
+    [ApiController]
     [RequireHttps]
     [Route("[controller]")]
-    [EnableCors]
+    //[EnableCors]
     public class LoggingController : ControllerBase
     {
         private readonly ILoggingProvider _logger;

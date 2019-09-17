@@ -18,7 +18,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\Core.Service.Interfaces\Core.Service.Interfaces.csproj" />
+    <ProjectReference Include="..\..\Core\Core.Service\Core.Service.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Infrastructure.AutoMapper\Infrastructure.AutoMapper.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Infrastructure.Captcha\Infrastructure.Captcha.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Infrastructure.Community\Infrastructure.Community.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Infrastructure.DAL.EF\Infrastructure.DAL.EF.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Infrastructure.Hangfire\Infrastructure.Hangfire.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Infrastructure.InstantWin\Infrastructure.InstantWin.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Infrastructure.ProCampaign\Infrastructure.ProCampaign.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Infrastructure.Relic\Infrastructure.NewRelic.csproj" />
   </ItemGroup>
 
 </Project>

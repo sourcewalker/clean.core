@@ -18,6 +18,7 @@
     <PackageReference Include="Hangfire.AspNetCore" Version="1.7.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
     <PackageReference Include="NSwag.AspNetCore" Version="13.0.6" />
   </ItemGroup>
 
@@ -32,10 +33,6 @@
     <ProjectReference Include="..\..\Infrastructure\Infrastructure.InstantWin\Infrastructure.InstantWin.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Infrastructure.ProCampaign\Infrastructure.ProCampaign.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Infrastructure.Relic\Infrastructure.NewRelic.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Extensions\" />
   </ItemGroup>
 
 </Project>

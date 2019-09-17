@@ -7,22 +7,22 @@ namespace Infrastructure.NewRelic
     {
         public void LogError(string errorMessage, Exception ex)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void LogInfo(string message)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void LogTrace(string errorMessage, string dataString)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void LogWarn(string errorMessage, string dataString)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
