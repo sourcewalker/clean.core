@@ -15,7 +15,11 @@ namespace Infrastructure.DAL.EF.Repository.Implementations
         private readonly IParticipantRepository _participantRepository;
         private readonly IMappingProvider _mapper;
 
-        public ParticipationRepository(IParticipantRepository participantRepository, IMappingProvider mapper)
+        public ParticipationRepository(
+            IParticipantRepository participantRepository,
+            IMappingProvider mapper,
+            DatabaseContext context)
+            : base(context)
         {
             _participantRepository = participantRepository;
             _mapper = mapper;
@@ -23,7 +27,7 @@ namespace Infrastructure.DAL.EF.Repository.Implementations
 
         public IEnumerable<ParticipationDto> GetAll()
         {
-            return _mapper.toDtos<ParticipationDto>(Table);
+            return _mapper.toDtos<ParticipationDto>(entities);
         }
 
         public int GetCount()
@@ -39,7 +43,7 @@ namespace Infrastructure.DAL.EF.Repository.Implementations
         }
 
         public async Task<IEnumerable<ParticipationDto>> GetAllAsync()
-            => await Task.Run(() => _mapper.toDtos<ParticipationDto>(Table));
+            => await Task.Run(() => _mapper.toDtos<ParticipationDto>(entities));
 
         public ParticipationDto GetById(Guid id)
             => _mapper.toDto<ParticipationDto>(Find(id));

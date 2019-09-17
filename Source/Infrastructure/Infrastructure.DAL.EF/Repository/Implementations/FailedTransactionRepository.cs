@@ -13,16 +13,19 @@ namespace Infrastructure.DAL.EF.Repository.Implementations
     {
         private readonly IMappingProvider _mapper;
 
-        public FailedTransactionRepository(IMappingProvider mapper)
+        public FailedTransactionRepository(
+            IMappingProvider mapper, 
+            DatabaseContext context) 
+            : base(context)
         {
             _mapper = mapper;
         }
 
         public IEnumerable<FailedTransactionDto> GetAll()
-            => _mapper.toDtos<FailedTransactionDto>(Table);
+            => _mapper.toDtos<FailedTransactionDto>(entities);
 
         public async Task<IEnumerable<FailedTransactionDto>> GetAllAsync()
-            => await Task.Run(() => _mapper.toDtos<FailedTransactionDto>(Table));
+            => await Task.Run(() => _mapper.toDtos<FailedTransactionDto>(entities));
 
         public FailedTransactionDto GetById(Guid id)
             => _mapper.toDto<FailedTransactionDto>(Find(id));

@@ -13,81 +13,85 @@ namespace Infrastructure.DAL.EF.Repository.Base
     {
         bool _disposed = false;
 
-        protected readonly DatabaseContext Db;
+        protected readonly DatabaseContext context;
 
-        protected DbSet<TEntity> Table;
+        protected DbSet<TEntity> entities;
 
-        protected RepositoryBase()
+        protected RepositoryBase(DatabaseContext context)
         {
-            Db = new DatabaseContext();
-            Table = Db.Set<TEntity>();
-        }
-        protected RepositoryBase(string connectionStringName)
-        {
-            var optionsBuilder = new DbContextOptionsBuilder<DatabaseContext>();
-            optionsBuilder.UseSqlServer(connectionStringName);
-            Db = new DatabaseContext(optionsBuilder.Options);
-            Table = Db.Set<TEntity>();
+            this.context = context;
+            entities = context.Set<TEntity>();
         }
 
-        public DatabaseContext Context => Db;
+        public DatabaseContext Context 
+            => context;
 
-        public bool HasChanges => Db.ChangeTracker.HasChanges();
+        public bool HasChanges 
+            => context.ChangeTracker.HasChanges();
 
-        public int Count => Table.Count();
+        public int Count 
+            => entities.Count();
 
-        public TEntity GetFirst() => Table.FirstOrDefault();
+        public TEntity GetFirst() 
+            => entities.FirstOrDefault();
 
-        public TEntity Find(Guid? id) => Table.Find(id);
+        public TEntity Find(Guid? id) 
+            => entities.Find(id);
 
-        public virtual IEnumerable<TEntity> GetAll() => Table;
+        public virtual IEnumerable<TEntity> GetAll() 
+            => entities.AsEnumerable();
 
         internal IEnumerable<TEntity> GetRange(IQueryable<TEntity> query, int skip, int take)
             => query.Skip(skip).Take(take);
+
         public virtual IEnumerable<TEntity> GetRange(int skip, int take)
-            => GetRange(Table, skip, take);
+            => GetRange(entities, skip, take);
 
         public virtual int Add(TEntity entity, bool persist = true)
         {
-            Table.Add(entity);
+            entities.Add(entity);
             return persist ? SaveChanges() : 0;
         }
 
-        public virtual int AddRange(IEnumerable<TEntity> entities, bool persist = true)
+        public virtual int AddRange(IEnumerable<TEntity> entitie_s, bool persist = true)
         {
-            Table.AddRange(entities);
+            foreach (var entity in entitie_s)
+            {
+                entities.Add(entity);
+            }
             return persist ? SaveChanges() : 0;
         }
         public virtual int Update(TEntity entity, bool persist = true)
         {
-            //Table.Attach(entity);
-            Db.Entry(entity).State = EntityState.Modified;
+            context.Entry(entity).State = EntityState.Modified;
             return persist ? SaveChanges() : 0;
         }
-        public virtual int UpdateRange(IEnumerable<TEntity> entities, bool persist = true)
+        public virtual int UpdateRange(IEnumerable<TEntity> entitie_s, bool persist = true)
         {
-            foreach (var entity in entities)
+            foreach (var entity in entitie_s)
             {
-                //Table.Attach(entity);
-                Db.Entry(entity).State = EntityState.Modified;
+                context.Entry(entity).State = EntityState.Modified;
             }
             return persist ? SaveChanges() : 0;
         }
         public virtual int Delete(TEntity entity, bool persist = true)
         {
-            Table.Remove(entity);
+            entities.Remove(entity);
             return persist ? SaveChanges() : 0;
         }
-        public virtual int DeleteRange(IEnumerable<TEntity> entities, bool persist = true)
+        public virtual int DeleteRange(IEnumerable<TEntity> entitie_s, bool persist = true)
         {
-            Table.RemoveRange(entities);
+            foreach (var entity in entitie_s)
+            {
+                entities.Remove(entity);
+            }
             return persist ? SaveChanges() : 0;
         }
 
         public int Delete(Guid id, byte[] timeStamp, bool persist = true)
         {
             var entity = Find(id);
-            Db.Entry(entity).State = EntityState.Deleted;
+            context.Entry(entity).State = EntityState.Deleted;
             return persist ? SaveChanges() : 0;
         }
 
@@ -95,7 +99,7 @@ namespace Infrastructure.DAL.EF.Repository.Base
         {
             try
             {
-                return Db.SaveChanges();
+                return context.SaveChanges();
             }
             catch (DbUpdateConcurrencyException ex)
             {
@@ -125,7 +129,7 @@ namespace Infrastructure.DAL.EF.Repository.Base
             if (_disposed)
                 return;
 
-            Db.Dispose();
+            context.Dispose();
             _disposed = true;
         }
     }

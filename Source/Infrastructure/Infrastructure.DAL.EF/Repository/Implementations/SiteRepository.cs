@@ -14,16 +14,19 @@ namespace Infrastructure.DAL.EF.Repository.Implementations
     {
         private readonly IMappingProvider _mapper;
 
-        public SiteRepository(IMappingProvider mapper)
+        public SiteRepository(
+            IMappingProvider mapper,
+            DatabaseContext context)
+            : base(context)
         {
             _mapper = mapper;
         }
 
         public IEnumerable<SiteDto> GetAll()
-            => _mapper.toDtos<SiteDto>(Table);
+            => _mapper.toDtos<SiteDto>(entities);
 
         public async Task<IEnumerable<SiteDto>> GetAllAsync()
-            => await Task.Run(() => _mapper.toDtos<SiteDto>(Table));
+            => await Task.Run(() => _mapper.toDtos<SiteDto>(entities));
 
         public SiteDto GetById(Guid id)
             => _mapper.toDto<SiteDto>(Find(id));

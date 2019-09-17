@@ -1,4 +1,4 @@
-﻿using Core.Infrastructure.Interfaces.Configuration;
+﻿//using Core.Infrastructure.Interfaces.Configuration;
 using Core.Infrastructure.Interfaces.CRM;
 using Core.Infrastructure.Interfaces.Logging;
 using Core.Infrastructure.Interfaces.Scheduler;
@@ -19,7 +19,7 @@ namespace Core.Service.Flow
         private readonly ILoggingProvider _logger;
         private readonly ICrmConsumerProvider _crmProvider;
         private readonly ISchedulerProvider _scheduler;
-        private readonly IConfigurationProvider _configProvider;
+        //private readonly IConfigurationProvider _configProvider;
         private readonly IFailedTransactionService _failedTransactionService;
 
         private string sourceConfigKey = "CSX:Consumer:SourceName";
@@ -34,7 +34,7 @@ namespace Core.Service.Flow
             ILoggingProvider logger,
             ICrmConsumerProvider crmProvider,
             ISchedulerProvider scheduler,
-            IConfigurationProvider configProvider,
+            //IConfigurationProvider configProvider,
             IFailedTransactionService failedTransactionService
         )
         {
@@ -43,7 +43,7 @@ namespace Core.Service.Flow
             _logger = logger;
             _crmProvider = crmProvider;
             _scheduler = scheduler;
-            _configProvider = configProvider;
+            //_configProvider = configProvider;
             _failedTransactionService = failedTransactionService;
         }
 
@@ -110,12 +110,12 @@ namespace Core.Service.Flow
         private Configurations Configure(string culture)
         {
             var configuration = new Configurations();
-            configuration.Settings.Source = _configProvider.GetSharedConfig(sourceConfigKey);
-            configuration.Settings.Transaction = _configProvider.GetSharedConfig(transactionConfigKey);
-            configuration.Settings.ApiKey = _configProvider.GetConfigByCultureAndEnvironment(apiKeyConfigKey,
-                                                CultureInfo.GetCultureInfo(culture));
-            configuration.Settings.ApiSecret = _configProvider.GetConfigByCultureAndEnvironment(apiSecretConfigKey,
-                                                    CultureInfo.GetCultureInfo(culture));
+            //configuration.Settings.Source = _configProvider.GetSharedConfig(sourceConfigKey);
+            //configuration.Settings.Transaction = _configProvider.GetSharedConfig(transactionConfigKey);
+            //configuration.Settings.ApiKey = _configProvider.GetConfigByCultureAndEnvironment(apiKeyConfigKey,
+            //                                    CultureInfo.GetCultureInfo(culture));
+            //configuration.Settings.ApiSecret = _configProvider.GetConfigByCultureAndEnvironment(apiSecretConfigKey,
+            //                                        CultureInfo.GetCultureInfo(culture));
             return configuration;
         }
 

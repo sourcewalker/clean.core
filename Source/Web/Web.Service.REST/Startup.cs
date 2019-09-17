@@ -1,8 +1,28 @@
 ﻿using AutoMapper;
+using Core.Infrastructure.Interfaces.Account;
+using Core.Infrastructure.Interfaces.CRM;
+using Core.Infrastructure.Interfaces.DAL;
+using Core.Infrastructure.Interfaces.InstantWin;
+using Core.Infrastructure.Interfaces.Logging;
+using Core.Infrastructure.Interfaces.Mapping;
+using Core.Infrastructure.Interfaces.Scheduler;
+using Core.Infrastructure.Interfaces.Validator;
+using Core.Service.Domain;
+using Core.Service.Flow;
+using Core.Service.Interfaces;
 using Hangfire;
+using Hangfire.Dashboard;
 using Hangfire.SqlServer;
 using Infrastructure.AutoMapper.Profiles;
+using Infrastructure.AutoMapper.Provider;
+using Infrastructure.Captcha.Provider;
+using Infrastructure.Community;
 using Infrastructure.DAL.EF;
+using Infrastructure.DAL.EF.Repository.Implementations;
+using Infrastructure.Hangfire;
+using Infrastructure.InstantWin.Provider;
+using Infrastructure.NewRelic;
+using Infrastructure.ProCampaign.Consumer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +31,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
+using Web.Service.REST.Filters;
 
 namespace Web.Service
 {
@@ -71,6 +92,32 @@ namespace Web.Service
             services.AddMvc()
                     .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            //services.AddScoped<Core.Infrastructure.Interfaces.Configuration.IConfigurationProvider, ConfigurationProvider>();
+
+            // Infrastructures
+            services.AddScoped<IMappingProvider, MappingProvider>();
+            services.AddScoped<IAccountProvider, KuhmunityProvider>();
+            services.AddScoped<ILoggingProvider, LoggingProvider>();
+            services.AddScoped<ISchedulerProvider, HangfireProvider>();
+            services.AddScoped<ICrmConsumerProvider, ConsumerProvider>();
+            services.AddScoped<IFormValidatorProvider, CaptchaProvider>();
+            services.AddScoped<IInstantWinMomentProvider, InstantWinProvider>();
+
+            // DAL
+            services.AddScoped<IFailedTransactionRepository, FailedTransactionRepository>();
+            services.AddScoped<ISiteRepository, SiteRepository>();
+            services.AddScoped<IParticipationRepository, ParticipationRepository>();
+            services.AddScoped<IParticipantRepository, ParticipantRepository>();
+
+            // Services
+            services.AddScoped<IParticipationService, ParticipationService>();
+            services.AddScoped<IParticipantService, ParticipantService>();
+            services.AddScoped<IFailedTransactionService, FailedTransactionService>();
+            services.AddScoped<ISurveyService, SurveyService>();
+            services.AddScoped<ISiteService, SiteService>();
+            services.AddScoped<IJourneyService, JourneyService>();
+            services.AddScoped<IValidationService, ValidationService>();
+            services.AddScoped<ILegalService, LegalService>();
 
             services.AddOpenApiDocument();
         }
@@ -142,6 +189,16 @@ namespace Web.Service
             {
                 options.Path = "/redoc";
             });
+
+            app.UseHangfireDashboard(
+                pathMatch: "/hangfire"
+                //options: new DashboardOptions()
+                //{
+                //    Authorization = new IDashboardAuthorizationFilter[] {
+                //        new SchedulerAuthorizationFilter(Configuration)
+                //    }
+                //}
+            );
         }
     }
 }

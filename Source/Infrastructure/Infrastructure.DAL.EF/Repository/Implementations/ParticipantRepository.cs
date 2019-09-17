@@ -14,14 +14,17 @@ namespace Infrastructure.DAL.EF.Repository.Implementations
     {
         private readonly IMappingProvider _mapper;
 
-        public ParticipantRepository(IMappingProvider mapper)
+        public ParticipantRepository(
+            IMappingProvider mapper,
+            DatabaseContext context)
+            : base(context)
         {
             _mapper = mapper;
         }
 
         public IEnumerable<ParticipantDto> GetAll()
         {
-            return _mapper.toDtos<ParticipantDto>(Table);
+            return _mapper.toDtos<ParticipantDto>(entities);
         }
 
         public int GetCount()
@@ -46,7 +49,7 @@ namespace Infrastructure.DAL.EF.Repository.Implementations
         }
 
         public async Task<IEnumerable<ParticipantDto>> GetAllAsync()
-            => await Task.Run(() => _mapper.toDtos<ParticipantDto>(Table));
+            => await Task.Run(() => _mapper.toDtos<ParticipantDto>(entities));
 
         public ParticipantDto GetById(Guid id)
             => _mapper.toDto<ParticipantDto>(Find(id));
