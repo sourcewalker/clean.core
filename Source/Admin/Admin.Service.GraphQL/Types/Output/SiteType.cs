@@ -1,4 +1,5 @@
-﻿using Core.Shared.DTO;
+﻿using Core.Model;
+using Core.Shared.DTO;
 using GraphQL.Types;
 
 namespace Admin.Service.GraphQL
@@ -7,7 +8,7 @@ namespace Admin.Service.GraphQL
     {
         public SiteType()
         {
-            var typeName = typeof(SiteDto).GetType().Name;
+            var typeName = nameof(Site);
 
             Field(x => x.Id, type: typeof(IdGraphType))
                 .Description($"Id property from the {typeName} object.");
@@ -16,7 +17,7 @@ namespace Admin.Service.GraphQL
             Field(x => x.Culture, type: typeof(StringGraphType))
                 .Description($"Culture property from the {typeName} object.");
             Field(x => x.Domain, type: typeof(StringGraphType))
-                .Description($"Culture property from the {typeName} object.");
+                .Description($"Domain property from the {typeName} object.");
             Field(x => x.CreatedDate, type: typeof(DateTimeOffsetGraphType))
                 .Description($"Created date property from the {typeName} object.");
             Field(x => x.ModifiedDate, type: typeof(DateTimeOffsetGraphType))

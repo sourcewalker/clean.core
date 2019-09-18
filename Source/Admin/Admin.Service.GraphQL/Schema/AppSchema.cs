@@ -9,6 +9,7 @@ namespace Admin.Service.GraphQL
             : base(resolver)
         {
             Query = resolver.Resolve<AppQuery>();
+            Mutation = resolver.Resolve<AppMutation>();
         }
     }
 }

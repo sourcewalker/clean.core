@@ -3,22 +3,22 @@ using Core.Service.Interfaces;
 using Core.Shared.DTO;
 using GraphQL.Types;
 
-namespace Web.Service.GraphQL
+namespace Admin.Service.GraphQL
 {
-    public class ParticipantType : ObjectGraphType<ParticipantDto>
+    public class FailedTransactionType : ObjectGraphType<FailedTransactionDto>
     {
-        public ParticipantType(IParticipationService participationService)
+        public FailedTransactionType(IParticipationService participationService)
         {
-            var typeName = typeof(ParticipantDto).GetType().Name;
+            var typeName = nameof(FailedTransaction);
 
             Field(x => x.Id, type: typeof(IdGraphType))
                 .Description($"Id property from the {typeName} object.");
             Field(x => x.ParticipationId, type: typeof(IdGraphType))
-                .Description($"Name property from the {typeName} object.");
-            Field(x => x.ConsumerId, type: typeof(StringGraphType))
-                .Description($"Culture property from the {typeName} object.");
-            Field(x => x.EmailHash, type: typeof(StringGraphType))
-                .Description($"Culture property from the {typeName} object.");
+                .Description($"Participation Id property from the {typeName} object.");
+            Field(x => x.TermsConsent, type: typeof(BooleanGraphType))
+                .Description($"Terms Content status property from the {typeName} object.");
+            Field(x => x.NewsletterOptin, type: typeof(BooleanGraphType))
+                .Description($"Newsletter optin status property from the {typeName} object.");
             Field(x => x.CreatedDate, type: typeof(DateTimeOffsetGraphType))
                 .Description($"Created date property from the {typeName} object.");
             Field(x => x.ModifiedDate, type: typeof(DateTimeOffsetGraphType))

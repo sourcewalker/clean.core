@@ -9,7 +9,7 @@ namespace Web.Service.GraphQL
     {
         public FailedTransactionType(IParticipationService participationService)
         {
-            var typeName = typeof(FailedTransactionDto).GetType().Name;
+            var typeName = nameof(FailedTransaction);
 
             Field(x => x.Id, type: typeof(IdGraphType))
                 .Description($"Id property from the {typeName} object.");

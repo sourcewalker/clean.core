@@ -3,24 +3,24 @@ using Core.Service.Interfaces;
 using Core.Shared.DTO;
 using GraphQL.Types;
 
-namespace Web.Service.GraphQL
+namespace Admin.Service.GraphQL
 {
     public class ParticipationType : ObjectGraphType<ParticipationDto>
     {
         public ParticipationType(ISiteService siteService)
         {
-            var typeName = typeof(ParticipationDto).GetType().Name;
+            var typeName = nameof(Participation);
 
             Field(x => x.Id, type: typeof(IdGraphType))
                 .Description($"Id property from the {typeName} object.");
             Field(x => x.SiteId, type: typeof(IdGraphType))
-                .Description($"Name property from the {typeName} object.");
+                .Description($"SiteId property from the {typeName} object.");
             Field(x => x.Status, type: typeof(StringGraphType))
-                .Description($"Name property from the {typeName} object.");
+                .Description($"Status property from the {typeName} object.");
             Field(x => x.ApiStatus, type: typeof(StringGraphType))
-                .Description($"Culture property from the {typeName} object.");
+                .Description($"Api Status property from the {typeName} object.");
             Field(x => x.ApiMessage, type: typeof(StringGraphType))
-                .Description($"Culture property from the {typeName} object.");
+                .Description($"Api Message property from the {typeName} object.");
             Field(x => x.CreatedDate, type: typeof(DateTimeOffsetGraphType))
                 .Description($"Created date property from the {typeName} object.");
             Field(x => x.ModifiedDate, type: typeof(DateTimeOffsetGraphType))
