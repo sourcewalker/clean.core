@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -6,8 +6,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="GraphQL" Version="2.4.0" />
+    <PackageReference Include="GraphQL.Server.Transports.AspNetCore" Version="3.4.0" />
+    <PackageReference Include="GraphQL.Server.Ui.Playground" Version="3.4.0" />
+    <PackageReference Include="Hangfire.AspNetCore" Version="1.7.6" />
+    <PackageReference Include="Hangfire.Core" Version="1.7.6" />
+    <PackageReference Include="Hangfire.SqlServer" Version="1.7.6" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Core.Service.Interfaces\Core.Service.Interfaces.csproj" />
+    <ProjectReference Include="..\..\Core\Core.Service\Core.Service.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Infrastructure.AutoMapper\Infrastructure.AutoMapper.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Infrastructure.Captcha\Infrastructure.Captcha.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Infrastructure.Community\Infrastructure.Community.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Infrastructure.DAL.EF\Infrastructure.DAL.EF.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Infrastructure.Hangfire\Infrastructure.Hangfire.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Infrastructure.InstantWin\Infrastructure.InstantWin.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Infrastructure.ProCampaign\Infrastructure.ProCampaign.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Infrastructure.Relic\Infrastructure.NewRelic.csproj" />
   </ItemGroup>
 
 </Project>

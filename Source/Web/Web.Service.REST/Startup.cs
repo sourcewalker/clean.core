@@ -11,7 +11,6 @@ using Core.Service.Domain;
 using Core.Service.Flow;
 using Core.Service.Interfaces;
 using Hangfire;
-using Hangfire.Dashboard;
 using Hangfire.SqlServer;
 using Infrastructure.AutoMapper.Profiles;
 using Infrastructure.AutoMapper.Provider;
@@ -31,7 +30,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
-using Web.Service.REST.Filters;
 using Web.Service.REST.Mapping;
 
 namespace Web.Service
@@ -81,13 +79,13 @@ namespace Web.Service
                 options.UseSqlServer(Configuration.GetConnectionString("LocalDatabase")));
 
             // Add Hangfire services.
-            services.AddHangfire(configuration => 
+            services.AddHangfire(configuration =>
                configuration
                 .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
                 .UseSimpleAssemblyNameTypeSerializer()
                 .UseRecommendedSerializerSettings()
                 .UseSqlServerStorage(
-                    Configuration.GetConnectionString("HangfireDatabase"), 
+                    Configuration.GetConnectionString("HangfireDatabase"),
                     new SqlServerStorageOptions
                     {
                         CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
@@ -99,10 +97,6 @@ namespace Web.Service
                     })
                 );
             services.AddHangfireServer();
-
-            // MVC Configuration
-            services.AddMvc()
-                    .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // Infrastructures Injection
             services.AddScoped<IMappingProvider, MappingProvider>();
@@ -128,6 +122,10 @@ namespace Web.Service
             services.AddScoped<IJourneyService, JourneyService>();
             services.AddScoped<IValidationService, ValidationService>();
             services.AddScoped<ILegalService, LegalService>();
+
+            // MVC Configuration
+            services.AddMvc()
+                    .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // NSwag Configuration
             services.AddOpenApiDocument();
@@ -155,33 +153,35 @@ namespace Web.Service
 
             var externalHostHeader = "X-External-Host";
             var externalPathHeader = "X-External-Path";
-            app.UseOpenApi(config =>
-            {
-                config.PostProcess =
-                    (document, request) =>
-                    {
-                        document.Info.Version = "v1";
-                        document.Info.Title = "Web Service REST Documentation";
-                        document.Info.Description = "Web Service API for Clean Core template";
-                        document.Info.TermsOfService = "None";
-                        document.Info.Contact = new NSwag.OpenApiContact
+            app.UseOpenApi(
+                config =>
+                {
+                    config.PostProcess =
+                        (document, request) =>
                         {
-                            Name = "Irina Nalijaona",
-                            Email = "nalijaona.andriamifidy@proximitybbdo.fr",
-                            Url = "https://git.proximity.fr/nandriam"
+                            document.Info.Version = "v1";
+                            document.Info.Title = "Web Service REST Documentation";
+                            document.Info.Description = "Web Service API for Clean Core template";
+                            document.Info.TermsOfService = "None";
+                            document.Info.Contact = new NSwag.OpenApiContact
+                            {
+                                Name = "Irina Nalijaona",
+                                Email = "nalijaona.andriamifidy@proximitybbdo.fr",
+                                Url = "https://git.proximity.fr/nandriam"
+                            };
+                            document.Info.License = new NSwag.OpenApiLicense
+                            {
+                                Name = "Use under MIT License",
+                                Url = "https://opensource.org/licenses/MIT"
+                            };
+                            if (request.Headers.ContainsKey(externalHostHeader))
+                            {
+                                document.Host = request.Headers[externalHostHeader].First();
+                                document.BasePath = request.Headers[externalPathHeader].First();
+                            }
                         };
-                        document.Info.License = new NSwag.OpenApiLicense
-                        {
-                            Name = "Use under MIT License",
-                            Url = "https://opensource.org/licenses/MIT"
-                        };
-                        if (request.Headers.ContainsKey(externalHostHeader))
-                        {
-                            document.Host = request.Headers[externalHostHeader].First();
-                            document.BasePath = request.Headers[externalPathHeader].First();
-                        }
-                    };
-            });
+                }
+            );
 
 
             app.UseSwaggerUi3(config =>
@@ -200,16 +200,7 @@ namespace Web.Service
                 options.Path = "/redoc";
             });
 
-            app.UseHangfireDashboard();
-            //app.UseHangfireDashboard(
-            //    pathMatch: "/hangfire"
-            //    options: new DashboardOptions()
-            //    {
-            //        Authorization = new IDashboardAuthorizationFilter[] {
-            //            new SchedulerAuthorizationFilter(Configuration)
-            //        }
-            //    }
-            //);
+            app.UseHangfireDashboard(pathMatch: "/hangfire");
         }
     }
 }

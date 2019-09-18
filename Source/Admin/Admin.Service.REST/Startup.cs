@@ -96,10 +96,6 @@ namespace Admin.Service
                 );
             services.AddHangfireServer();
 
-            // MVC Configuration
-            services.AddMvc()
-                    .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
             // Infrastructures Injection
             services.AddScoped<IMappingProvider, MappingProvider>();
             services.AddScoped<IAccountProvider, KuhmunityProvider>();
@@ -124,6 +120,10 @@ namespace Admin.Service
             services.AddScoped<IJourneyService, JourneyService>();
             services.AddScoped<IValidationService, ValidationService>();
             services.AddScoped<ILegalService, LegalService>();
+
+            // MVC Configuration
+            services.AddMvc()
+                    .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // NSwag Configuration
             services.AddOpenApiDocument();
