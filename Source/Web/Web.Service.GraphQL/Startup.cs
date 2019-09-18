@@ -73,7 +73,7 @@ namespace Web.Service.GraphQL
             services.AddSingleton(mappingConfig.CreateMapper());
 
             // Add runtime cache
-            services.AddMemoryCache();
+            //services.AddMemoryCache();
 
             services.AddDbContext<DatabaseContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("LocalDatabase")));

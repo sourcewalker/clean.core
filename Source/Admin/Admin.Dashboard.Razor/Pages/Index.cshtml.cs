@@ -1,17 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Admin.Dashboard.Razor.Client;
+using Admin.Dashboard.Razor.ViewModels;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Admin.Dashboard.Razor.Pages
 {
     public class IndexModel : PageModel
     {
+        private readonly IServiceClient _client;
+
+        public IndexModel(IServiceClient client)
+        {
+            _client = client;
+        }
+
+        public SiteViewModel Site { get; set; }
+
         public void OnGet()
         {
-
+            Site = _client.GetSiteByCultureAsync("en-GB").Result;
         }
     }
 }

@@ -1,15 +1,14 @@
-﻿using System;
+﻿using Core.Infrastructure.Interfaces.Logging;
+using Core.Service.Interfaces;
+using Core.Shared.DTO;
+using Core.Shared.Utility;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
-using Core.Infrastructure.Interfaces.Logging;
-using Core.Service.Interfaces;
-using Core.Shared.DTO;
-using Core.Shared.Utility;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Web.Service.REST.Models;
 
 namespace Web.Service.REST.Controllers
@@ -17,7 +16,6 @@ namespace Web.Service.REST.Controllers
     [ApiController]
     [RequireHttps]
     [Route("[controller]")]
-    //[EnableCors]
     public class ParticipateController : ControllerBase
     {
         private readonly IJourneyService _journeyService;
@@ -44,7 +42,6 @@ namespace Web.Service.REST.Controllers
         /// </remarks>
         /// <response code="200">Ok</response>
         /// <response code="400">Bad request</response>
-        /// <response code="500">Internal Server Error</response>
         [HttpGet("model")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
@@ -105,7 +102,6 @@ namespace Web.Service.REST.Controllers
         /// </remarks>
         /// <response code="200">Ok</response>
         /// <response code="400">Bad request</response>
-        /// <response code="500">Internal Server Error</response>
         [HttpGet("status")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
@@ -165,7 +161,6 @@ namespace Web.Service.REST.Controllers
         /// </remarks>
         /// <response code="200">Ok</response>
         /// <response code="400">Bad request</response>
-        /// <response code="500">Internal Server Error</response>
         [HttpPost("participate")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]

@@ -1,12 +1,13 @@
 ﻿using Core.Shared.DTO;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Core.Service.Interfaces
 {
     public interface ISiteService
     {
+        IEnumerable<SiteDto> GetAll();
+
         IEnumerable<SiteDto> GetSitesPaged(int pageNumber, int pageSize);
 
         SiteDto GetSite(Guid id);

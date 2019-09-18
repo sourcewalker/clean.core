@@ -1,7 +1,6 @@
 ﻿//using Core.Infrastructure.Interfaces.Configuration;
 using Core.Infrastructure.Interfaces.Logging;
 using Core.Service.Interfaces;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -13,7 +12,6 @@ namespace Web.Service.REST.Controllers
 {
     [ApiController]
     [RequireHttps]
-    //[EnableCors]
     [Route("[controller]")]
     public class LegalController : ControllerBase
     {
@@ -35,7 +33,7 @@ namespace Web.Service.REST.Controllers
         /// Get Legal text
         /// </remarks>
         /// <response code="200">Ok</response>
-        /// <response code="500">Internal Server Error</response>
+        /// <response code="400">BadRequest</response>
         [HttpGet("privacy")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]

@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Dynamic;
 using Web.Service.REST.Models;
@@ -8,7 +7,6 @@ namespace Web.Service.REST.Controllers
 {
     [ApiController]
     [RequireHttps]
-    //[EnableCors]
     public class PingController : ControllerBase
     {
         /// <summary>

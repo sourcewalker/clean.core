@@ -18,6 +18,11 @@ namespace Core.Service.Domain
             _siteRepository = siteRepository;
         }
 
+        public IEnumerable<SiteDto> GetAll()
+        {
+            return _siteRepository.GetAll();
+        }
+
         public bool CreateSite(SiteDto site)
         {
             return _siteRepository.Add(site);

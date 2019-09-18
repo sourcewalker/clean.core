@@ -1,17 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
-using Web.Site.Models;
+using System.Diagnostics;
+using System.Threading.Tasks;
+using Web.Site.MVC.Client;
+using Web.Site.MVC.ViewModels;
 
 namespace Web.Site.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly IServiceClient _client;
+
+        public HomeController(IServiceClient client)
         {
+            _client = client;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var requestCulture = Request.HttpContext.Features.Get<IRequestCultureFeature>();
+            var culture = requestCulture.RequestCulture.Culture.Name;
+            var site = await _client.GetSiteByCultureAsync(culture);
             return View();
         }
 

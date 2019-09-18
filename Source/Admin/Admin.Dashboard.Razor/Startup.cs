@@ -1,14 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Admin.Dashboard.Razor.Client;
+using Admin.Dashboard.Razor.REST;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using GraphQL.Client;
 
 namespace Admin.Dashboard.Razor
 {
@@ -21,21 +20,32 @@ namespace Admin.Dashboard.Razor
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<CookiePolicyOptions>(options =>
             {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            // Uncomment to use Graph QL
+            services.AddScoped(
+                        x => new GraphQLClient(Configuration["ServiceUrl:AdminGraphQL"]));
+            //services.AddScoped<IServiceClient, GraphQlClient>();
+
+            services.AddHttpClient();
+            services.AddHttpClient(
+                        "RestClient",
+                        client =>
+                        {
+                            client.BaseAddress = new Uri(Configuration["ServiceUrl:AdminREST"]);
+                            client.DefaultRequestHeaders.Add("Accept", "application/json");
+                        });
+            services.AddScoped<IServiceClient, RESTClient>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -45,7 +55,6 @@ namespace Admin.Dashboard.Razor
             else
             {
                 app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 

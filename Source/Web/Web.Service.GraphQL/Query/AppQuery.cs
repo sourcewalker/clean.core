@@ -26,6 +26,14 @@ namespace Web.Service.GraphQL
                }
             );
 
+            Field<ListGraphType<SiteType>>(
+               "sites",
+               resolve: context =>
+               {
+                   return siteService.GetAll();
+               }
+            );
+
             Field<SiteType>(
                 "site",
                 arguments: new QueryArguments(

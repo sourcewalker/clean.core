@@ -1,5 +1,4 @@
 ﻿using Core.Infrastructure.Interfaces.Logging;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,7 +10,6 @@ namespace Web.Service.REST.Controllers
     [ApiController]
     [RequireHttps]
     [Route("[controller]")]
-    //[EnableCors]
     public class LoggingController : ControllerBase
     {
         private readonly ILoggingProvider _logger;
@@ -30,7 +28,7 @@ namespace Web.Service.REST.Controllers
         /// Create an error log
         /// </remarks>
         /// <response code="200">Ok</response>
-        /// <response code="500">Internal Server Error</response>
+        /// <response code="400">BadRequest</response>
         [HttpPost("error")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
@@ -81,7 +79,7 @@ namespace Web.Service.REST.Controllers
         /// Create an information log
         /// </remarks>
         /// <response code="200">Ok</response>
-        /// <response code="500">Internal Server Error</response>
+        /// <response code="400">BadRequest</response>
         [HttpPost("info")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
@@ -133,7 +131,7 @@ namespace Web.Service.REST.Controllers
         /// Create a trace log
         /// </remarks>
         /// <response code="200">Ok</response>
-        /// <response code="500">Internal Server Error</response>
+        /// <response code="400">BadRequest</response>
         [HttpPost("trace")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
@@ -185,7 +183,7 @@ namespace Web.Service.REST.Controllers
         /// Create a warn log
         /// </remarks>
         /// <response code="200">Ok</response>
-        /// <response code="500">Internal Server Error</response>
+        /// <response code="400">BadRequest</response>
         [HttpPost("warn")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
