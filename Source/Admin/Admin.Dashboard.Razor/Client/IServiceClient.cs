@@ -10,5 +10,11 @@ namespace Admin.Dashboard.Razor.Client
         Task<List<SiteViewModel>> GetAllSitesAsync();
 
         Task<SiteViewModel> GetSiteByCultureAsync(string culture);
+
+        Task<SiteViewModel> CreateSiteAsync(SiteViewModel siteToCreate);
+
+        Task<SiteViewModel> UpdateSiteAsync(Guid id, SiteViewModel siteToUpdate);
+
+        Task<string> DeleteSiteAsync(Guid id);
     }
 }

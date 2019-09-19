@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Admin.Dashboard.Razor.Client;
 using Admin.Dashboard.Razor.ViewModels;
+using System;
 
 namespace Admin.Dashboard.Razor.REST
 {
@@ -34,6 +35,21 @@ namespace Admin.Dashboard.Razor.REST
             var response = await result.Content.ReadAsAsync<ApiResponse>();
 
             return JsonConvert.DeserializeObject<SiteViewModel>(response.Data.ToString());
+        }
+
+        public Task<SiteViewModel> CreateSiteAsync(SiteViewModel siteToCreate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<SiteViewModel> UpdateSiteAsync(Guid id, SiteViewModel siteToUpdate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<string> DeleteSiteAsync(Guid id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

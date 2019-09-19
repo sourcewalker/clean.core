@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Admin.Dashboard.Razor.Client;
 using Admin.Dashboard.Razor.ViewModels;
+using System;
 
 namespace Admin.Dashboard.Razor.GraphQL
 {
@@ -53,6 +54,61 @@ namespace Admin.Dashboard.Razor.GraphQL
 
             var result = await _client.PostAsync(query);
             return result.GetDataFieldAs<SiteViewModel>("site");
+        }
+
+        public async Task<SiteViewModel> CreateSiteAsync(SiteViewModel siteToCreate)
+        {
+            var query = new GraphQLRequest
+            {
+                Query = @"
+                mutation($site: siteInput!){
+                  createSite(site: $site){
+                    id
+                    name
+                    culture
+                    domain
+                  }
+                }",
+                Variables = new { site = siteToCreate }
+            };
+
+            var response = await _client.PostAsync(query);
+            return response.GetDataFieldAs<SiteViewModel>("createSite");
+        }
+
+        public async Task<SiteViewModel> UpdateSiteAsync(Guid id, SiteViewModel siteToUpdate)
+        {
+            var query = new GraphQLRequest
+            {
+                Query = @"
+                mutation($site: siteInput!, $siteId: ID!){
+                  updateSite(site: $site, siteId: $siteId){
+                    id
+                    name
+                    culture
+                    domain
+                  }
+               }",
+                Variables = new { site = siteToUpdate, siteId = id }
+            };
+
+            var response = await _client.PostAsync(query);
+            return response.GetDataFieldAs<SiteViewModel>("updateSite");
+        }
+
+        public async Task<string> DeleteSiteAsync(Guid id)
+        {
+            var query = new GraphQLRequest
+            {
+                Query = @"
+               mutation($siteId: ID!){
+                  deleteSite(siteId: $siteId)
+                }",
+                Variables = new { siteId = id }
+            };
+
+            var response = await _client.PostAsync(query);
+            return response.Data.deleteSite;
         }
     }
 }
