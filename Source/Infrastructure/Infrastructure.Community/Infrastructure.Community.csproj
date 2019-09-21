@@ -5,22 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Libraries\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Core\Core.Infrastructure.Interfaces\Core.Infrastructure.Interfaces.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="SWEET.WebProjects.Brands.Milka.Kuhmunity.DTO">
+      <HintPath>Libraries\Kuhmunity.DTO.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Extensions.Configuration.Abstractions">
       <HintPath>..\..\..\..\..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.configuration.abstractions\2.2.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\..\..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\newtonsoft.json\9.0.1\lib\netstandard1.0\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="SWEET.WebProjects.Brands.Milka.Kuhmunity.DTO">
-      <HintPath>..\..\..\..\..\hexago.net\Infrastructure\Infrastructure.Community\Librairies\SWEET.WebProjects.Brands.Milka.Kuhmunity.DTO.dll</HintPath>
     </Reference>
   </ItemGroup>
 
