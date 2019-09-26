@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Infrastructure.DAL.EF;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Web.Service.GraphQL
 {
@@ -14,7 +9,14 @@ namespace Web.Service.GraphQL
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            var host = CreateWebHostBuilder(args)
+                        .Build();
+            using (var scope = host.Services.CreateScope())
+            using (var context = scope.ServiceProvider.GetService<DatabaseContext>())
+            {
+                context.Database.EnsureCreated();
+            }
+            host.Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
